@@ -1,0 +1,118 @@
+<div class="wrapper" fxLayout="column" fxLayoutAlign="space-around center">
+
+    <div class="wrapper__row" fxLayout="column" fxLayoutAlign="space-around start">
+        <span class="title">Pregled potvrda</span>
+        <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="zahtev__column" fxLayout="column" fxLayoutAlign="space-around start">
+                <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+                    <label>Usluga:</label>
+                    <input type="text" [(ngModel)]="usluga">
+                    <button (click)="pretrazi()">Pretraga potvrde</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="wrapper__row2" fxLayout="column" fxLayoutAlign="start start">
+        <div class="row" fxLayout="row" fxLayoutAlign="center center">
+
+            <div class="table__wrapper">
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Broj potvrde</th>
+                        <th>Usluga</th>
+                        <th>Napomena</th>
+                        <th>Sifra Zahteva</th>
+                        <th>IdSmestaja</th>
+                        <th>IdDestinacije</th>
+                        <th>Izmena</th>
+                    </tr>
+                    <tr *ngFor="let p of potvrde">
+                        <td>{{p.BrojPotvrde}}</td>
+                        <td>{{p.Usluga}}</td>
+                        <td>{{p.Napomena}}</td>
+                        <td>{{p.Zahtev.SifraZahteva}}</td>
+                        <td>{{p.Smestaj.SmestajId}}</td>
+                        <td>{{p.Destinacija.DestinacijaId}}</td>
+                        <td><button (click)="izmeniZahtev(p.BrojPotvrde)"><img src="../../assets/ee.png"> </button></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+    
+
+        <div class="wrapper__row" fxLayout="column" fxLayoutAlign="space-around start">
+            <span class="title">Zahtev za rezervaciju</span>
+            <div class="row" fxLayout="row" fxLayoutAlign="start center">
+
+                <label class="label">Pretraga zahteva:</label>
+                <button type="button" (click)="Pretrazi(this.sifraZahteva)">Pretrazi</button>
+
+                <label class="label">Sifra zahteva:</label>
+                <input class="input" type="number" [(ngModel)]="sifraZahteva">
+                <label class="label">Datum:</label>
+                <label class="label">{{datum}}</label>
+                <!-- <input class="input" type="text" [(ngModel)]="datum"> -->
+                <label class="label">Napomena:</label>
+                <label class="label">{{napomenaZahtev}}</label>
+                <!-- <input class="input" type="text" [(ngModel)]="napomenaZahtev"> -->
+            </div>
+        </div>
+
+        <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+
+                <label>Sifra zahteva:</label>
+                <label class="label">{{brojPotvrde}}</label>
+                <!-- <input class="input" type="number" [(ngModel)]="brojPotvrde" /> -->
+
+                <label>Usluga:</label>
+                <input class="input" type="text" [(ngModel)]="uslugaa" />
+
+                <label class="label3">Napomena:</label>
+                <textarea class="input__textarea" [(ngModel)]="this.napomena"></textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="wrapper__row">
+        <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="zahtev__column" fxLayout="column" fxLayoutAlign="space-around start">
+                <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+                    <label>Smestaj:</label>
+                    <select class="input"  [(ngModel)]="smestaj.SmestajId" (change)="onChangeHotel($event)">
+                        <option *ngFor="let h of smestaji" [value]="h.SmestajId">{{h.NazivSmestaja}}</option>
+                    </select>
+                </div>
+                <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+                    <label>Destinacija:</label>
+                    <select class="input" [(ngModel)]="destinacija.DestinacijaId" (change)="onChangeDest($event)">
+                        <option *ngFor="let h of destinacije" [value]="h.DestinacijaId">{{h.NazivDestinacije}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="zahtev__column" fxLayout="column" fxLayoutAlign="space-around start">
+                <button (click)="Izmeni()" type="button">Izmeni potvrdu</button>
+            </div>
+            <div class="zahtev__column" fxLayout="column" fxLayoutAlign="space-around start">
+                <button type="button" (click)="odustani()">Odustani</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>

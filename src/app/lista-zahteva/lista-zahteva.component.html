@@ -1,0 +1,43 @@
+
+<div class="wrapper" fxLayout="column" fxLayoutAlign="space-around center">
+
+    <input  type="date"  [(ngModel)]="searchword" (change)="searchThis()">
+
+
+    <div class="wrapper__row2" fxLayout="column" fxLayoutAlign="start start">
+
+      
+
+        <div class="row" fxLayout="row" fxLayoutAlign="center center">
+           
+            <div class="table__wrapper">
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>SifraZahteva</th>
+                        <th>Datum</th>
+                        <th>Broj soba</th>
+                        <th>Broj nocenja</th>
+                        <th>Pregled</th>
+                        <th>Izmena</th>
+                        <th>Brisanje</th>
+                    </tr>
+                    <tr *ngFor="let zahtev of zahtevi">
+                        <td>{{zahtev.SifraZahteva}}</td>
+                        <td>{{zahtev.Datum}}</td>
+                        <td>{{zahtev.BrSoba}}</td>
+                        <td>{{zahtev.BrNocenja}}</td>
+                        <td><button (click)="prikaziZahtev(zahtev.SifraZahteva)"><img src="../../assets/s.png"> </button></td>
+                        <td><button (click)="izmeniZahtev(zahtev.SifraZahteva)"><img src="../../assets/e.png"> </button></td>
+                        <td><button (click)="obrisiZahtev(zahtev.SifraZahteva)"><img src="../../assets/d.png"> </button></td>
+                      
+                    </tr>
+
+
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

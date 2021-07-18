@@ -1,0 +1,122 @@
+
+.wrapper {
+    width: 100%;
+    height: 90vh;
+  }
+  
+  .overlay-container{
+    background: powderblue !important; 
+  }
+  
+  #toast-container{
+    background-color: orangered !important ;
+  background:orange !important ;
+  width: fit-content;
+  }
+  .wrapper__row {
+    width: 95%;
+    height: 17%;
+  }
+  
+  .wrapper__row2 {
+    width: 95%;
+    height: 50%;
+  }
+  
+  .row {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
+  
+  .zahtev__row {
+    width: 90%;
+  }
+  
+  .zahtev__column {
+    margin-left: 4%;
+    width: 30%;
+  }
+  
+  .input {
+    width: 170px;
+  }
+  
+  .label {
+    margin-left: 4%;
+    margin-right: 10px;
+  }
+  
+  .label2 {
+    margin-left: 4%;
+  }
+  
+  .label3 {
+    margin-left: 2%;
+    margin-right: 10px;
+  }
+  
+  .button {
+    margin-left: 4%;
+  }
+  
+  .table__wrapper {
+    overflow: auto;
+    height: 150px;
+    max-height: 150px;
+    margin-top: 15px;
+  }
+  
+  table {
+    width: 70vw;
+    background-color: whitesmoke;
+  }
+  
+  th {
+    font-weight: 500;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid rgb(167, 167, 167);
+  }
+  
+  td {
+    font-weight: 500;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+  }
+  
+  .title {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .input__textarea {
+    width: 250px;
+    max-width: 250px;
+    height: 50px;
+    max-height: 50px;
+  }
+  
+  input {
+    box-sizing: border-box;
+    padding: 5px 10px;
+  }
+  
+  select {
+    box-sizing: border-box;
+    padding: 5px 10px;
+  }
+  
+  .input__last {
+    margin-right: 4%;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(0, 168, 0);
+  }
+  

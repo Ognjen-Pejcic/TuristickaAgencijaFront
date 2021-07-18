@@ -1,0 +1,94 @@
+<div class="wrapper" fxLayout="column" fxLayoutAlign="space-around center">
+  <div class="wrapper__row" fxLayout="column" fxLayoutAlign="space-around start">
+    <span class="title">Unos zahteva za rezervaciju hotela</span>
+    <div class="row" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="zahtev__column" fxLayout="column" fxLayoutAlign="space-around start">
+        <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+          <label>Sifra zahteva:</label>
+          <span class="response">{{zahtev.SifraZahteva}}</span>
+        </div>
+        <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+          <label>Datum:</label>
+          <span class="response">{{zahtev.Datum}}</span>
+        </div>
+      </div>
+      <div class="zahtev__column" fxLayout="column" fxLayoutAlign="space-around start">
+        <div class="zahtev__row" fxLayout="row" fxLayoutAlign="center start">
+          <label class="label3">Napomena:</label>
+          <span class="response">{{zahtev.Napomena}}</span>
+        </div>
+      </div>
+      <div class="zahtev__column" fxLayout="column" fxLayoutAlign="space-around start">
+        <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+          <label lass="label2">Broj soba:</label>
+          <span class="response">{{zahtev.BrSoba}}</span>
+        </div>
+        <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+          <label lass="label2">Broj nocenja:</label>
+          <span class="response">{{zahtev.BrNocenja}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper__row" fxLayout="column" fxLayoutAlign="space-around start">
+    <span class="title">Unos zahteva za rezervaciju hotela</span>
+    <div class="row" fxLayout="row" fxLayoutAlign="start center">
+      <label class="label" for="zahtev-korisnika">Zahtev korisnika:</label>
+      <span class="response"></span>
+      <label class="label">Sifra zahteva:</label>
+      <span class="response">{{zahtev.ZahtevKorisnika.SifraZahteva}}</span>
+      <label class="label">Vreme boravka:</label>
+      <span class="response">{{zahtev.ZahtevKorisnika.VremeBoravka}}</span>
+    </div>
+  </div>
+
+  <div class="wrapper__row2" fxLayout="column" fxLayoutAlign="start start"
+    *ngFor="let item of zahtev.StavkaRezervacijeHotela">
+
+    <span class="title">Stavke rezervacije hotela</span>
+    <div class="row" fxLayout="row" fxLayoutAlign="start center">
+      <label class="label">ID stavke rezervacije hotela:</label>
+      <span class="response">{{item.StavkaRezervacijeHotelaId}}</span>
+    </div>
+
+    <div class="row" fxLayout="row" fxLayoutAlign="start center">
+      <label class="label" for="korisnik">Korisnik:</label>
+      <span class="response">{{item.Korisnik.JMBG}}</span>
+      <label class="label3">Ime i prezime:</label>
+      <span class="response">{{item.Korisnik.ImePrezime}}</span>
+      <label class="label3">Datum rodjenja:</label>
+      <span class="response">{{item.Korisnik.DatumRodjenja}}</span>
+      <label class="label3">Broj pasosa:</label>
+      <span class="response">{{item.Korisnik.BrPasosa}}</span>
+      <label class="label3">Broj telefona:</label>
+      <span class="response">{{item.Korisnik.BrTelefona}}</span>
+    </div>
+    <div class="row" fxLayout="row" fxLayoutAlign="start center">
+      <label class="label" for="smestaj">Tip smestaja:</label>
+      <span class="response">{{item.TipSmestaja.NazivTipaSmestaja}}</span>
+      <label class="label" for="soba">Tip sobe:</label>
+      <span class="response">{{item.TipSobe.NazivTipaSobe}}</span>
+      <label class="label" for="kategorija">Kategorija:</label>
+      <span class="response">{{item.Kategorija.NazivKategroije}}</span>
+    </div>
+
+  </div>
+
+
+  <div class="wrapper__row" fxLayout="column" fxLayoutAlign="space-around start">
+   
+      <div class="zahtev__column" fxLayout="column" fxLayoutAlign="space-around start">
+        <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+          <label>Zahtev za hotel:</label>
+          <span class="response">{{zahtev.Hotel.NazivHotela}}</span>
+        </div>
+        <div class="zahtev__row" fxLayout="row" fxLayoutAlign="space-between start">
+          <label>Zahtev poslao:</label>
+          <span class="response">{{zahtev.Radnik.ImeRadnika}}</span>
+        </div>
+      </div>
+
+    </div>
+  
+</div>
