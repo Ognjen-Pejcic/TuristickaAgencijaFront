@@ -1,5 +1,4 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Form } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { ZahtevZaRezervisanjeHotela } from '../model/zahtevZaRezHotela/zahtev-za-rezervisanje-hotela.model';
@@ -19,15 +18,10 @@ export class PregledComponent implements OnInit {
     console.log(Number(id));
     this.apiservice.vratiZahtev(Number(id)).subscribe((response) => {
             this.zahtev = response;
-            console.log(this.zahtev)
-            console.log(this.zahtev.SifraZahteva)
           },
           (error) => {
             console.log("neuspesno");
           }
         );
-
-
   }
-
 }

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { PregledComponent } from './pregled/pregled.component';
 import { UnosComponent } from './unos/unos.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListaZahtevaComponent } from './lista-zahteva/lista-zahteva.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +17,10 @@ import { DatePipe } from '@angular/common';
 import { UnosPotvrdeComponent } from './unos-potvrde/unos-potvrde.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PregledPotvrdaComponent } from './pregled-potvrda/pregled-potvrda.component';
+import { LoginComponent } from './login/login.component';
+import { AuthModule, LogLevel, OidcSecurityService } from 'angular-auth-oidc-client';
+import { TokenInterceptorService } from "./interceptor/token-interceptor.service"
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,8 @@ import { PregledPotvrdaComponent } from './pregled-potvrda/pregled-potvrda.compo
     ListaZahtevaComponent,
     IzmenaComponent,
     UnosPotvrdeComponent,
-    PregledPotvrdaComponent
+    PregledPotvrdaComponent,
+    LoginComponent,
   ],
   imports: [
 
@@ -45,9 +50,27 @@ import { PregledPotvrdaComponent } from './pregled-potvrda/pregled-potvrda.compo
     }
     ),
     NotifierModule,
-    NgbModule 
+    NgbModule,
+    AuthModule.forRoot({
+      config: {
+        authority: 'https://localhost:5443',
+        redirectUrl: 'https://localhost:5443/signin-oidc',
+        postLogoutRedirectUri: 'https://localhost:5443/signout-callback-oidc',
+        clientId: 'm2m.client',
+        scope: 'TuristickaAgencija.read',
+        responseType: 'code',
+        silentRenew: true,
+        useRefreshToken: true,
+        logLevel: LogLevel.Debug,
+      },
+    }),
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }], 
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

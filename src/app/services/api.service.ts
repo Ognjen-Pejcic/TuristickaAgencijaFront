@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { identity, Observable } from 'rxjs';
+import { Loginuser } from '../loginuser';
 import { Potvrda } from '../model/potvrda';
 import { ZahtevZaRezervisanjeHotela } from '../model/zahtevZaRezHotela/zahtev-za-rezervisanje-hotela.model';
 
@@ -63,30 +64,44 @@ export class ApiService {
   public napraviZahtev(): Observable<any> {
     return this.http.get<any>('https://localhost:44306/api/zahtevZaRez/create');
   }
-  public vratiHotele(): Observable<any> {
-    return this.http.get<any>('https://localhost:44306/api/Hotel/');
+  public vratiHotele(token:string): Observable<any> {
+    return this.http.get<any>('https://localhost:44306/api/Hotel/' );
   }
 
   public vratiKategorije(): Observable<any> {
     return this.http.get<any>('https://localhost:44306/api/Kategorija');
   }
+  
   public vratiKorisnike(): Observable<any> {
     return this.http.get<any>('https://localhost:44306/api/Korisnik');
   }
+
   public vratiRadnik(): Observable<any> {
     return this.http.get<any>('https://localhost:44306/api/Radnik');
   }
+
   public vratiTipSobe(): Observable<any> {
     return this.http.get<any>('https://localhost:44306/api/TipSobe');
   }
+
   public vratiTipSmestaja(): Observable<any> {
     return this.http.get<any>('https://localhost:44306/api/TipSmestaja');
   }
+
   public vratiZahteveKorsnika(): Observable<any> {
     return this.http.get<any>('https://localhost:44306/api/ZahteviKorisnika');
   }
+
   public vratiPoslednji(): Observable<any> {
     return this.http.get<any>('https://localhost:44306/api/zahtevZaRez/poslednji');
+  }
+
+  public login(body:URLSearchParams): Observable<any> {
+    return this.http.post<any>('https://localhost:5443/connect/token', body.toString(),
+    {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+    });
   }
  
 }

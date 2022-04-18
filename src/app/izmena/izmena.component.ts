@@ -74,6 +74,7 @@ export class IzmenaComponent implements OnInit {
     this.notifier = notifierService;
   }
 
+  token:string
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.service.vratiZahtev(Number(id)).subscribe((response) => {
@@ -102,15 +103,33 @@ export class IzmenaComponent implements OnInit {
         console.log("neuspesno");
       }
     );
-    console.log("kurcinela")
-    this.service.vratiHotele().subscribe((response) => {
-      this.hoteli = response;
-      console.log(this.hoteli)
-    },
-      (error) => {
-        console.log("neuspesno");
-      }
-    );
+
+    let body = new URLSearchParams();
+    body.set('client_id', "m2m.client");
+    body.set('grant_type', "client_credentials");
+    body.set('password', "Pass123$");
+    body.set('username', "angella");
+    body.set('client_secret', "ClientSecret1");        
+
+        this.service.login(body).subscribe((response) => {
+          this.router.initialNavigation();
+          console.log(response);
+          this.token = response.access_token;
+          console.log(this.token)
+
+          this.service.vratiHotele(this.token).subscribe((response) => {
+            this.hoteli = response;
+            console.log(this.hoteli)
+          },
+            (error) => {
+              console.log("neuspesno");
+            }
+          );
+        })
+
+        
+       
+   
     this.service.vratiRadnik().subscribe((response) => {
       this.radnici = response;
       console.log(this.radnici)

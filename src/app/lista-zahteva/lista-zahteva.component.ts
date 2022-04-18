@@ -18,10 +18,12 @@ export class ListaZahtevaComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.vratiZahteve().subscribe((response) => {
+      
       this.zahtevi = response;
     });
   }
   first:boolean = false;
+
   searchThis() {
     if(!this.first){
       this.temp = this.zahtevi;

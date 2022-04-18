@@ -141,7 +141,7 @@ export class UnosComponent implements OnInit {
       }
     );
 
-    this.service.vratiHotele().subscribe((response) => {
+    this.service.vratiHotele("s").subscribe((response) => {
       this.hoteli = response;
       console.log(this.hoteli)
     },
