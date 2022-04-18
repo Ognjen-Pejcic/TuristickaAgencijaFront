@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  username: string;
+  password: string;
+
   constructor(public oidcSecurityService: OidcSecurityService, private service: ApiService, private router: Router) { }
 
   ngOnInit(): void {
@@ -19,21 +22,14 @@ export class LoginComponent implements OnInit {
       console.log("check auth", isAuthenticated);
     });
   }
-  user: Loginuser = {
-    client_id: "m2m.client",
-    grant_type: "client_credentials",
-    password: "Pass123$",
-    username: "angella",
-    client_secret: "ClientSecret1"
-  };
-
+  
   login() {
 
     let body = new URLSearchParams();
     body.set('client_id', "m2m.client");
     body.set('grant_type', "client_credentials");
-    body.set('password', "Pass123$");
-    body.set('username', "angella");
+    body.set('password', this.password); //"Pass123$"
+    body.set('username', this.username); //"angella"
     body.set('client_secret', "ClientSecret1");
 
     this.service.login(body).subscribe((response) => {

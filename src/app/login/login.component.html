@@ -1,5 +1,9 @@
-<div>
-    <input type="text" name="username">
-    <input type="password" name="password">
-    <button (click) = "login()">Login</button>
+<div class="container">
+    <div class="form">
+        <form action="#" class="login-form">
+            <input type="text" name="username" placeholder="Username" [(ngModel)]="username">
+            <input type="password" name="password" placeholder="Password" [(ngModel)]="password">
+            <button class="btn" (click)="login()">Login</button>
+        </form>
+    </div>
 </div>
